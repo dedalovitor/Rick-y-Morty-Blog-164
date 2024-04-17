@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			characters: [],
 			locations: [],
 			episodes: [],
-			favorites: [],
+			favorites: [], //lo creamos aquí porque lo vamos a utlizar desde diferentes sitios (las diferentes cartas)
 			detailsInfo: {}
 
 		},
@@ -26,9 +26,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch("https://rickandmortyapi.com/api/episode");
 				const data = await response.json();
 				setStore({ episodes: data.results })
-			}
+			},
 
+			setFavorites: (name) => {
+				const store = getStore();
+				if (!store.favorites.includes(name)) {
+					setStore({ favorites: [...store.favorites, name] })
+				} else {
+					setStore({ favorites: store.favorites.filter((favName) => favName != name) })
+				}
 
+			},
 		}
 	}
 }
