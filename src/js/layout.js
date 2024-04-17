@@ -22,7 +22,7 @@ const Layout = () => {
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<Home />} />
-						<Route path="/details/:theid" element={<Details />} />
+						<Route path="/details/:type/:id" element={<Details />} /> {/* para añadir parámetros dentro de la ruta los marcamos con ": */}
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					<Footer />

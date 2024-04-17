@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";  //nos importamos el hook de link del react router dom.
 
 export const CardLocation = ({ location }) => {
 
@@ -10,7 +11,9 @@ export const CardLocation = ({ location }) => {
                 <p className="card-text">Type: {location.type}</p>
                 <p className="card-text">Dimension: {location.dimension}</p>
                 <p className="card-text">Residents: {location.residents.length}</p>
-                <button href="#" className="btn btn-primary">Go somewhere</button>
+                <Link to={"details/location/" + location.id}> {/*en la carta le pasamos el param de character de esta manera: dentro de la propia ruta*/}
+                    <button href="#" className="btn btn-primary">Go somewhere</button>
+                </Link>
             </div>
         </div>
     )

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";  //nos importamos el hook de link del react router dom.
 
 export const CardEpisode = ({ episode }) => {
 
@@ -10,7 +11,9 @@ export const CardEpisode = ({ episode }) => {
                 <p className="card-text">Air Date: {episode.air_date}</p>
                 <p className="card-text">Episode: {episode.episode}</p>
                 <p className="card-text">Characters: {episode.characters.length}</p>
-                <button href="#" className="btn btn-primary">Go somewhere</button>
+                <Link to={"details/episode/" + episode.id}> {/*en la carta le pasamos el param de character de esta manera: dentro de la propia ruta*/}
+                    <button href="#" className="btn btn-primary">Go somewhere</button>
+                </Link>
             </div>
         </div>
     )
