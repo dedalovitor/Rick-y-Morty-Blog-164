@@ -14,12 +14,13 @@ export const Home = () => {
 			<div className="container ">
 				<h1>Characters</h1>
 				<div className="row">
-					{store.characters.map((character) => {
+					{store.characters.results ? store.characters.results.map((character) => {
 						return <CardCharacter key={character.id} character={character}></CardCharacter>
 
 
-					})}
+					}) : "loading..."}
 				</div>
+				<button className="btn btn-primary" onClick={() => actions.getCharacters(store.characters.info.next)}>Load More</button> {/**Para que funcione la url del fetch debe de ser dinámica, ya que por cada página de characters cambia la url*/}
 			</div>
 
 
@@ -27,12 +28,13 @@ export const Home = () => {
 			<div className="container">
 				<h1>Locations</h1>
 				<div className="row">
-					{store.locations.map((location) => {
+					{store.locations.results ? store.locations.results.map((location) => {
 						return <CardLocation key={location.id} location={location}></CardLocation>
 
 
-					})}
+					}) : "Loading..."}
 				</div>
+				<button className="btn btn-primary" onClick={() => actions.getLocations(store.locations.info.next)}>Load More</button> {/**Para que funcione la url del fetch debe de ser dinámica, ya que por cada página de characters cambia la url*/}
 			</div>
 
 
@@ -40,12 +42,11 @@ export const Home = () => {
 			<div className="container">
 				<h1>Episodes</h1>
 				<div className="row">
-					{store.episodes.map((episode) => {
+					{store.episodes.results ? store.episodes.results.map((episode) => {
 						return <CardEpisode key={episode.id} episode={episode}></CardEpisode>
-
-
-					})}
+					}) : "Loading..."}
 				</div>
+				<button className="btn btn-primary" onClick={() => actions.getEpisodes(store.episodes.info.next)}>Load More</button> {/**Para que funcione la url del fetch debe de ser dinámica, ya que por cada página de characters cambia la url*/}
 			</div>
 
 

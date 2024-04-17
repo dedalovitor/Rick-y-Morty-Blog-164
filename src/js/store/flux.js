@@ -1,31 +1,31 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			characters: [],
-			locations: [],
-			episodes: [],
+			characters: {},
+			locations: {},
+			episodes: {},
 			favorites: [], //lo creamos aquí porque lo vamos a utlizar desde diferentes sitios (las diferentes cartas)
 			detailsInfo: {}
 
 		},
 		actions: {
-			getCharacters: async () => {
-				const response = await fetch("https://rickandmortyapi.com/api/character");
+			getCharacters: async (url) => { //le pasamos la url como parámetro
+				const response = await fetch(url); //pasamos la url de la página de characters como parámetro para poderla hacer dinámica, y poder ir desplazándonos por la paginación. Dentro del appContext en el useEffect le pasamos la url
 				const data = await response.json();
-				setStore({ characters: data.results })
+				setStore({ characters: data })
 			},
 
-			getLocations: async () => {
-				const response = await fetch("https://rickandmortyapi.com/api/location");
+			getLocations: async (url) => {
+				const response = await fetch(url);
 				const data = await response.json();
-				setStore({ locations: data.results })
+				setStore({ locations: data })
 			},
 
 
-			getEpisodes: async () => {
-				const response = await fetch("https://rickandmortyapi.com/api/episode");
+			getEpisodes: async (url) => {
+				const response = await fetch(url);
 				const data = await response.json();
-				setStore({ episodes: data.results })
+				setStore({ episodes: data })
 			},
 
 			setFavorites: (name) => {

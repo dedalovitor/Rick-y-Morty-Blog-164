@@ -22,9 +22,9 @@ const injectContext = PassedComponent => {
 		);
 
 		useEffect(() => {
-			state.actions.getCharacters();
-			state.actions.getLocations();
-			state.actions.getEpisodes();
+			state.actions.getCharacters("https://rickandmortyapi.com/api/character"); //como es el primer hook que realizamos, cuando cargamos la página por primera vez le estamos indicando que traiga la primera página de characters
+			state.actions.getLocations("https://rickandmortyapi.com/api/location"); //como es el primer hook que realizamos, cuando cargamos la página por primera vez le estamos indicando que traiga la primera página de locations
+			state.actions.getEpisodes("https://rickandmortyapi.com/api/episode"); //como es el primer hook que realizamos, cuando cargamos la página por primera vez le estamos indicando que traiga la primera página de episodes
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
